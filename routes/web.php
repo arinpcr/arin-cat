@@ -29,6 +29,3 @@ Route::get('/about', function () {
     return view('halaman-about');
 });
 
-Route::get('/data/{param1?}', function ($param1 = '')
-    return 'data saya: '.$param1;
-});
