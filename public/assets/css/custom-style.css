@@ -1,0 +1,9 @@
+/* font  */
+@font-face {
+    font-family: 'LexendDeca';
+    src: url('assets/fonts/LexendDeca.ttf');
+}
+
+.font1{
+    font-family: 'MyCustomFont';
+}

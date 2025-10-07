@@ -37,7 +37,18 @@ class QuestionController extends Controller
         $data['email']      = $request->email;
         $data['pertanyaan'] = $request->pertanyaan;
 
-        return view('home-question-respon', $data);
+        //return view('home-question-respon', $data);
+
+        // Redirect ke route yang memiliki alias 'home'
+        return redirect()->route('home')->with('info', 'Terimakasih atas pertanyaannya <b> ' .$data['nama'].'! </b>
+        Silahkan cek email anda di <b>' .$data['email'].'</b> untuk respon lebih lanjut');
+
+        // //Redirect ke halaman sebelumnya
+        // return redirect()->back();
+
+        // // Redirect ke URL eksternal
+        //  return redirect()->away('https://www.tokopedia.com');
+
     }
 
     /**

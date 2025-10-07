@@ -8,6 +8,7 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -22,7 +23,7 @@
         }
 
         .hero-section {
-            background-color: #ff0080;
+            background-color: #3E97FF;
             color: white;
             padding: 50px 0;
             text-align: center;
@@ -56,6 +57,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
+            <img src="{{ asset('assets/images/Tyler.png') }}" alt="Logo">
             <a class="navbar-brand" href="#">My Laravel App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +85,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="display-6 mb-2">{{ $username }} </h1>
+            <h1 class="display-6 mb-2 font1">{{ $username }} </h1>
             <p class="lead mb-0">{{ $last_login }} </p>
         </div>
     </section>
@@ -163,6 +165,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Form Pertanyaan</h5>
 
+
+                        {{-- notif error --}}
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -172,6 +176,17 @@
                                 </ul>
                             </div>
                         @endif
+
+
+                        {{-- notif info --}}
+                        @if (session('info'))
+                            <div class="alert alert-info">
+                                {!! session('info') !!}
+                            </div>
+                        @endif
+
+
+                        {{-- notif pertanyaan --}}
                         <form action="{{ route('question.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
